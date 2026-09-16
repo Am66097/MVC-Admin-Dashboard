@@ -1,0 +1,72 @@
+﻿@model MVC_Day_02.ViewModels.InstructorCreateViewModel
+
+@{
+    ViewData["Title"] = "Edit Instructor";
+}
+
+<h1 class="mb-4">Edit Instructor</h1>
+
+<form action="/Instructor/Edit" method="post">
+    
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" name="Name" value="@Model.Name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Address</label>
+        <input type="text" name="Address" value="@Model.Address" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Salary</label>
+        <input type="number" name="Salary" value="@Model.Salary" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Image Url</label>
+      <input type="text" name="ImgURL" value="@Model.ImgURL" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Department</label>
+        <select name="dept_Id" class="form-control">
+            @foreach (var department in Model.Departments)
+            {
+                <option value="@department.Id">@department.Name</option>
+            }
+            <select name="dept_Id" class="form-control">
+                @foreach (var department in Model.Departments)
+                {
+                    if (department.Id == Model.dept_Id)
+                    {
+                        <option value="@department.Id" selected>@department.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@department.Id">@department.Name</option>
+                    }
+                }
+            </select>
+            <select name="crs_Id" class="form-control">
+                @foreach (var course in Model.Courses)
+                {
+                    if (course.Id == Model.crs_Id)
+                    {
+                        <option value="@course.Id" selected>@course.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@course.Id">@course.Name</option>
+                    }
+                }
+            </select>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

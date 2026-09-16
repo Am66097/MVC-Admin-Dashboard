@@ -1,0 +1,43 @@
+﻿@model MVC_Day_02.Models.Course
+
+@{
+    ViewData["Title"] = "Add New Course";
+    Layout = "_AdminLayout";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Add New Course</h2>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form asp-action="Add" asp-controller="Course" method="post">
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Course Name</label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Degree" class="form-label">Total Degree</label>
+                    <input asp-for="Degree" class="form-control" type="number" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="MinDegree" class="form-label">Minimum Degree</label>
+                    <input asp-for="MinDegree" class="form-control" type="number" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="dept_id" class="form-label">Department</label>
+                    <select asp-for="dept_id" class="form-control" asp-items="@(new SelectList(ViewBag.Departments, "Id", "Name"))">
+                        <option value="">-- Select Department --</option>
+                    </select>
+                </div>
+
+                <br />
+                <button type="submit" class="btn btn-primary">Save Course</button>
+                <a asp-action="Index" asp-controller="Course" class="btn btn-secondary">Back to List</a>
+            </form>
+        </div>
+    </div>
+</div>
