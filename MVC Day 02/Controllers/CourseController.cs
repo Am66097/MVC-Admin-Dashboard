@@ -6,7 +6,7 @@ namespace MVC_Day_02.Controllers
 {
     public class CourseController : Controller
     {
-       
+
         AppDbContext context = new AppDbContext();
 
         #region Day 04
@@ -32,14 +32,20 @@ namespace MVC_Day_02.Controllers
         [HttpPost]
         public IActionResult Add(Course newCourse)
         {
-
-            context.Courses.Add(newCourse);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-
+            if (ModelState.IsValid)
+            {
+                context.Courses.Add(newCourse);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            //  لازم نبعت الأقسام تاني لو الداتا فيها مشكلة
+            ViewBag.Departments = context.Departments.ToList();
+            return View(newCourse);
         }
 
         #endregion
+
+
 
     }
 }
