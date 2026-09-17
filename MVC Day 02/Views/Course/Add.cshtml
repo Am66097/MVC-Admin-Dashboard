@@ -12,26 +12,41 @@
         <div class="card-body">
             <form asp-action="Add" asp-controller="Course" method="post">
 
+                <!-- Course Name -->
                 <div class="mb-3">
                     <label asp-for="Name" class="form-label">Course Name</label>
                     <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
+                <!-- Total Degree -->
                 <div class="mb-3">
                     <label asp-for="Degree" class="form-label">Total Degree</label>
                     <input asp-for="Degree" class="form-control" type="number" />
+                    <span asp-validation-for="Degree" class="text-danger"></span>
                 </div>
 
+                <!-- Minimum Degree -->
                 <div class="mb-3">
                     <label asp-for="MinDegree" class="form-label">Minimum Degree</label>
                     <input asp-for="MinDegree" class="form-control" type="number" />
+                    <span asp-validation-for="MinDegree" class="text-danger"></span>
                 </div>
 
+                <!-- Course Hours -->
+                <div class="mb-3">
+                    <label asp-for="Hours" class="form-label">Hours</label>
+                    <input asp-for="Hours" class="form-control" type="number" />
+                    <span asp-validation-for="Hours" class="text-danger"></span>
+                </div>
+
+                <!-- Department -->
                 <div class="mb-3">
                     <label asp-for="dept_id" class="form-label">Department</label>
                     <select asp-for="dept_id" class="form-control" asp-items="@(new SelectList(ViewBag.Departments, "Id", "Name"))">
                         <option value="">-- Select Department --</option>
                     </select>
+                    <span asp-validation-for="dept_id" class="text-danger"></span>
                 </div>
 
                 <br />
